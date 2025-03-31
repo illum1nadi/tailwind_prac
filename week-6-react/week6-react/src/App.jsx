@@ -37,7 +37,7 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <button onClick={
         updateTitle
       }>Click me to change the title</button>
@@ -47,7 +47,7 @@ function App() {
       <Header title = {staticTitle}></Header>
       <Header title = {staticTitle}></Header>
       <Header title = {staticTitle}></Header>
-    </div>
+    </>
   )
 }
 
