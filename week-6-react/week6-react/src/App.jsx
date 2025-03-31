@@ -5,11 +5,20 @@ import './App.css'
 import { Header } from './components/header'
 //cannot return two childs in a component. as it makes it easy to do reconcilation.
 
+
+
 function App() {
+  const [title, setTitle] = useState("Aditya")
+
   return (
     <>
-      <Header title = "aditya"></Header>
-      <Header title = "aditya"></Header>
+      <button onClick={
+        () => {
+          setTitle(Math.random())
+        }
+      }>Click me to change the title</button>
+      <Header title = {`My name is ${title}`}></Header>
+      <Header title = "My name is not Aditya"></Header>
     </>
   )
 }
