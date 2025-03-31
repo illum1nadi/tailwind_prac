@@ -1,44 +1,34 @@
 import { useState } from 'react'
+import React, {Fragment} from 'react';
 
-//prerequisite to using a wrapper.
+//Actually using wrappers with the help of the child prop.
 
 function App() {
  
   return (
     <>
-      <CardWrapper innerComponent={<TextComponent></TextComponent>}>
-        
+      <CardWrapper>
+          <div>
+            <h1>Hi there</h1>
+            <h2>This is me</h2>
+          </div>
       </CardWrapper> 
 
-      <CardWrapper innerComponent={<TextComponent1></TextComponent1>}>
-        
+      <CardWrapper>
+          Hi there1.
       </CardWrapper> 
+
     </>
   )
 }
 
-function TextComponent() {
-  return(
-    <div>
-      Hi there.
-    </div>
-  )
-}
-
-function TextComponent1() {
-  return(
-    <div>
-      Hi there1.
-    </div>
-  )
-}
-
-function CardWrapper({innerComponent}) {
+const CardWrapper = React.memo(function CardWrapper({children}) {
+  console.log(children);
   return (
     <div style={{border : "2px solid black", padding : "2px"}}>
-      {innerComponent}
+      {children}
     </div>
   )
-}
+})
 
 export default App
