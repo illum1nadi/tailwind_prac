@@ -6,8 +6,7 @@ import { Header } from './components/header'
 //cannot return two childs in a component. as it makes it easy to do reconcilation.
 
 
-
-function App() {
+function HeaderWithButton() {
   const [title, setTitle] = useState("Aditya")
 
   return (
@@ -18,6 +17,17 @@ function App() {
         }
       }>Click me to change the title</button>
       <Header title = {`My name is ${title}`}></Header>
+    </>
+  )
+  
+}
+
+
+function App() {
+  
+  return (
+    <>
+      <HeaderWithButton></HeaderWithButton>
       <Header title = "My name is not Aditya"></Header>
     </>
   )
