@@ -1,35 +1,53 @@
+// import React, { Fragment } from "react";
+// import { useState } from "react";
+// import Header from "./components/Header";
+
+// function App() {
+//   const [title, setTitle] = useState("my name is harkirat");
+
+//   return (
+//     <div>
+//       <button onClick={
+//         () => {
+//           setTitle(Math.random())
+//         }
+//       }>Update the title</button>
+//       <Header title={title} > </Header>
+//       <Header title="harkirat2" > </Header>
+//       <Header title="harkirat2" > </Header>
+//       <Header title="harkirat2" > </Header>
+//       <Header title="harkirat2" > </Header>
+//     </div>
+//   );
+// }
+
+
+// export default App;
+
+import React, { memo } from "react";
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Header } from './components/header'
-//cannot return two childs in a component. as it makes it easy to do reconcilation.
-
-
-function HeaderWithButton() {
-  const [title, setTitle] = useState("Aditya")
-
-  return (
-    <>
-      <button onClick={
-        () => {
-          setTitle(Math.random())
-        }
-      }>Click me to change the title</button>
-      <Header title = {`My name is ${title}`}></Header>
-    </>
-  )
-  
-}
-
+import Header from "./components/Header";
 
 function App() {
-  
+  const [title, setTitle] = useState("Aditya")
+  const staticTitle = "My name is not adi";
+
+  function updateTitle() {
+    setTitle(Math.random())
+  }
+
   return (
-    <>
-      <HeaderWithButton></HeaderWithButton>
-      <Header title = "My name is not Aditya"></Header>
-    </>
+    <div>
+      <button onClick={
+        updateTitle
+      }>Click me to change the title</button>
+      <Header title = {title}></Header>
+      <Header title = {staticTitle}></Header>
+      <Header title = {staticTitle}></Header>
+      <Header title = {staticTitle}></Header>
+      <Header title = {staticTitle}></Header>
+      <Header title = {staticTitle}></Header>
+    </div>
   )
 }
 
