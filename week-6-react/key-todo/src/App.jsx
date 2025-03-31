@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { Todo } from './components/Todo'
 
+let counter = 4;
+
 function App() {
+ 
   const [todos, setTodos] = useState([{
     id : 1,
     title : "gym jao bc.",
@@ -20,10 +23,11 @@ function App() {
 
   function addTodo() {
     setTodos([...todos, {
-      id : 4, 
+      id : counter++, 
       title : "gym jao bc.",
       description : "jaa raha hun bc."
     }])
+
   }
   
   return (
@@ -38,7 +42,7 @@ function App() {
         <button onClick={addTodo}>Add a Todo</button>
       </div>
       {todos.map(element => 
-        <Todo title = {element.title} description = {element.description}></Todo>
+        <Todo key = {element.id} title = {element.title} description = {element.description}></Todo>
       )}
     </div>
   )
