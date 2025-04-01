@@ -4,11 +4,17 @@ function App() {
 
   const [count, setCount] = useState(0)
   const [number, setNumb] = useState(0)
+  const [final, setFinal] = useState(0)
 
 
   //Using memos here to prevent loop running when we click counter button as they are unrelated.
-  let ans = 0;
-  for(let i = 0; i <= number; i++) ans += i;
+
+  useEffect(() => {
+    let ans = 0;
+    for(let i = 0; i <= number; i++) ans += i;
+    setFinal(ans)
+  }, [number])
+  
 
   return (
     <>
