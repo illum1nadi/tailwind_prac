@@ -1,38 +1,37 @@
 import { useState, useEffect, useMemo } from 'react'
+import React from 'react';
+import { Fragment } from 'react';
+
+//rerender happens each time though props are not changing and functional reference is different each time it is redefined.
 
 function App() {
 
-  const [count, setCount] = useState(0)
-  const [number, setNumb] = useState(0)
-  //const [final, setFinal] = useState(0)
+  const [counter, setCounter] = useState(0);
 
-
-  //Using memos here to prevent loop running when we click counter button as they are unrelated.
-
-  let count1 = useMemo(() => {
-    let ans = 0;
-    for(let i = 0; i <= number; i++) ans += i;
-    //setFinal(ans)
-    console.log("hello")
-    return ans;
-  }, [number])
+  function a() {
+    console.log("hi there.")
+  }
   
-
+  
   return (
     <>
-      <input type="text" onChange={
-        (e) => {
-          setNumb(e.target.value);
-        }
-      } />
-      <p>Sum in {count1}</p>
-      <button onClick={
-        () => {
-          setCount(count + 1);
-        }
-      }>Counter({count})</button>
+      <button onClick={() => {
+        setCounter(counter + 1);
+      }}>Counter {counter}</button>
+
+      <Demo a = {a}></Demo>
+      
     </>
   )
 }
+
+const Demo = React.memo(({a}) => {
+  console.log("rerender");
+  return(
+    <>
+      HI there.
+    </>
+  )
+})
 
 export default App
