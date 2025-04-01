@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import React from 'react';
 import { Fragment } from 'react';
 
@@ -8,9 +8,10 @@ function App() {
 
   const [counter, setCounter] = useState(0);
 
-  function a() {
-    console.log("hi there.")
-  }
+  //fix using use callback hook.
+  const a = useCallback(function a() {
+    console.log("hi there");
+  }, []);
   
   
   return (
