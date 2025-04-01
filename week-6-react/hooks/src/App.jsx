@@ -1,23 +1,28 @@
 import { useState, useEffect } from 'react'
-import { Todos } from './Todos'
 
 function App() {
 
-  const [todos, setTodos] = useState([])
+  const [count, setCount] = useState(0)
+  const [number, setNumb] = useState(0)
 
-  useEffect(() => {
-    fetch("http://localhost:3002/todos")
-    .then(async (res) => {
-      const json = await res.json();
-      setTodos(json);
-    })
-  })
 
-  
+  //Using memos here to prevent loop running when we click counter button as they are unrelated.
+  let ans = 0;
+  for(let i = 0; i <= number; i++) ans += i;
 
   return (
     <>
-      <Todos todos = {todos}></Todos>
+      <input type="text" onChange={
+        (e) => {
+          setNumb(e.target.value);
+        }
+      } />
+      <p>Sum in {ans}</p>
+      <button onClick={
+        () => {
+          setCount(count + 1);
+        }
+      }>Counter({count})</button>
     </>
   )
 }
