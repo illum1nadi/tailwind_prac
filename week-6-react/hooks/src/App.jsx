@@ -1,18 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 
 function App() {
 
   const [count, setCount] = useState(0)
   const [number, setNumb] = useState(0)
-  const [final, setFinal] = useState(0)
+  //const [final, setFinal] = useState(0)
 
 
   //Using memos here to prevent loop running when we click counter button as they are unrelated.
 
-  useEffect(() => {
+  let count1 = useMemo(() => {
     let ans = 0;
     for(let i = 0; i <= number; i++) ans += i;
-    setFinal(ans)
+    //setFinal(ans)
+    console.log("hello")
+    return ans;
   }, [number])
   
 
@@ -23,7 +25,7 @@ function App() {
           setNumb(e.target.value);
         }
       } />
-      <p>Sum in {ans}</p>
+      <p>Sum in {count1}</p>
       <button onClick={
         () => {
           setCount(count + 1);
