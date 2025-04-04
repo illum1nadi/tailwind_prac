@@ -6,6 +6,8 @@ import './App.css'
 function App() {
   return (
     <>
+
+    
       <div className='grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2'>
         <div className='bg-blue-500 col-span-1'>HI</div>
         <div className='bg-cyan-500 col-span-1'>Hello</div>
