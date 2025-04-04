@@ -1,12 +1,66 @@
-function transform(i) {
-  return i * 2;
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const jwtPassword = "123456";
+const app = express();
+app.use(express.json());
+
+const ALL_USERS = [
+  {
+    username: "harkirat@gmail.com",
+    password: "123",
+    name: "harkirat singh",
+  },
+  {
+    username: "raman@gmail.com",
+    password: "123321",
+    name: "Raman singh",
+  },
+  {
+    username: "priya@gmail.com",
+    password: "123321",
+    name: "Priya kumari",
+  },
+];
+
+function userExists(username, password) {
+  for (let obj of ALL_USERS) {
+    if (obj.username === username && obj.password === password) {
+      return true;  
+    }
+  }
+  return false; 
 }
 
-let arr = [1, 2, 3, 4];
 
-const ans = arr.filter((num) => {
-  if(num & 1) return true;
-  return false;
-})
+app.post("/signin", function (req, res) {
+  const username = req.body.username;
+  const password = req.body.password;
 
-console.log(ans);
+  if (!userExists(username, password)) {
+    return res.status(403).json({
+      msg: "User doesnt exist in our in memory db",
+    });
+  }
+
+  var token = jwt.sign({ username: username }, jwtPassword);
+  return res.json({
+    token,
+  });
+});
+
+app.get("/users", function (req, res) {
+  const token = req.headers.authorization;
+  try {
+    const decoded = jwt.verify(token, jwtPassword);
+    const username = decoded.username;
+    return res.status(403).json({
+      msg: "Valid token",
+    });
+  } catch (err) {
+    return res.status(403).json({
+      msg: "Invalid token",
+    });
+  }
+});
+
+app.listen(3000)

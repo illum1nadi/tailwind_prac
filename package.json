@@ -1,0 +1,27 @@
+{
+  "name": "coursework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illum1nadi/test-repo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/illum1nadi/test-repo/issues"
+  },
+  "homepage": "https://github.com/illum1nadi/test-repo#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.1",
+    "vite": "^6.2.4",
+    "zod": "^3.24.2"
+  }
+}

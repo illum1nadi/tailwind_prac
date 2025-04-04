@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  function populateDiv() {
+    const toChange = document.getElementById("finalSum");
+    const ele1 = document.getElementById("firstNum").value;
+    const ele2 = document.getElementById("secondNum").value;
+    fetch("https://sum-server.100xdevs.com/sum?a=" + ele1 + "&b=" + ele2).then(
+      (response) => {
+        response.text().then(
+          (ans) => {
+            document.getElementById("finalSum").innerHTML = ans;
+          }
+        )
+      }
+    )
+    
+  }
+</script>
+<body>
+  <input type="text" placeholder="First Number" id = "firstNum"> <br></br>
+  <input type="text" placeholder="Second Number" id = "secondNum"> <br></br>
+  <button onclick="populateDiv()">Calculate Sum</button> <br></br>
+  <div id = "finalSum"></div>
+</body>
+</html>
